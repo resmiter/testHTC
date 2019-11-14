@@ -25,9 +25,10 @@ public class JsonQuery extends AsyncTask<URL, Void, String> {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line = "";
-            while (line != null) {
+            String line;
+            while (true) {
                 line = bufferedReader.readLine();
+                if (line == null) break;
                 data.append(line);
             }
         } catch (IOException e) {
@@ -39,15 +40,6 @@ public class JsonQuery extends AsyncTask<URL, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
-//        в конце объекта приходит null
-//        например:
-//        {
-//            "name": "Ivan",
-//            "skills": "C++"
-//        }null
-//        причину этого не нашел, поправьте, если не верно
-        data = new StringBuilder(data.toString().replace("}null", "}"));
 
         String qwe = data.toString();
         Message msg = new Message();
