@@ -1,9 +1,10 @@
 package com.example.testhtc.struct;
 
+import androidx.annotation.NonNull;
+
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
 
 public class Employee {
 
@@ -15,13 +16,7 @@ public class Employee {
     private String phoneNumber;
     @SerializedName("skills")
     @Expose
-    private ArrayList<String> skills;
-
-    public Employee(){
-        this.name = "";
-        this.phoneNumber = "";
-        this.skills = null;
-    }
+    private List<String> skills = null;
 
 
     public String getName() {
@@ -40,11 +35,25 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public ArrayList<String> getSkills() {
+    public List<String> getSkills() {
         return skills;
     }
 
-    public void setSkills(ArrayList<String> skills) {
+    public void setSkills(List<String> skills) {
         this.skills = skills;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String result = "name: " + name + "\n" +
+                    "phone_number: " + phoneNumber + "\n" +
+                    "skills: ";
+            for (int i = 0; i < skills.size(); i++){
+                result += skills.get(i) + ", ";
+            }
+            result += "!";
+            result = result.replace(", !", "");
+        return result;
     }
 }

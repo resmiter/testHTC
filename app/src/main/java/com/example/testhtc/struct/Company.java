@@ -1,12 +1,16 @@
 package com.example.testhtc.struct;
 
+import androidx.annotation.NonNull;
+
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 public class Company {
 
+    @SerializedName("company")
+    @Expose
+    private Company company;
     @SerializedName("name")
     @Expose
     private String name;
@@ -15,48 +19,62 @@ public class Company {
     private String age;
     @SerializedName("competences")
     @Expose
-    private ArrayList<String> competences;
+    private List<String> competences = null;
     @SerializedName("employees")
     @Expose
-    private ArrayList<Employee> employees;
+    private List<Employee> employees = null;
 
-    public Company(){
-        this.name = "";
-        this.age = "";
-        this.competences = null;
-        this.employees = null;
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAge() {
-        return age;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAge() {
+        return age;
     }
 
     public void setAge(String age) {
         this.age = age;
     }
 
-    public ArrayList<String> getCompetences() {
+    public List<String> getCompetences() {
         return competences;
     }
 
-    public void setCompetences(ArrayList<String> competences) {
+    public void setCompetences(List<String> competences) {
         this.competences = competences;
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(ArrayList<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
-}
 
+    @NonNull
+    @Override
+    public String toString() {
+        String result = "name: " + name + "\n" +
+                "age: " + age + "\n" +
+                "competences: ";
+        for (int i = 0; i < competences.size(); i++){
+            result += competences.get(i) + ", ";
+        }
+        result += "!";
+        result = result.replace(", !", "");
+        return result;
+    }
+}
