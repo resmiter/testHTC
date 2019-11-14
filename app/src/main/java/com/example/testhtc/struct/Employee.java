@@ -6,7 +6,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
 
     @SerializedName("name")
     @Expose
@@ -43,17 +43,22 @@ public class Employee {
         this.skills = skills;
     }
 
+    @Override
+    public int compareTo(Employee employee) {
+        return name.compareTo(employee.name);
+    }
+
     @NonNull
     @Override
     public String toString() {
-        String result = "name: " + name + "\n" +
-                    "phone_number: " + phoneNumber + "\n" +
-                    "skills: ";
-            for (int i = 0; i < skills.size(); i++){
-                result += skills.get(i) + ", ";
-            }
-            result += "!";
-            result = result.replace(", !", "");
-        return result;
+        StringBuilder result = new StringBuilder("name: " + name + "\n" +
+                "phone_number: " + phoneNumber + "\n" +
+                "skills: ");
+        for (int i = 0; i < skills.size(); i++){
+            result.append(skills.get(i)).append(", ");
+        }
+        result.append("!");
+        result = new StringBuilder(result.toString().replace(", !", ""));
+        return result.toString();
     }
 }

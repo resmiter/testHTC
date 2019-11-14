@@ -3,6 +3,7 @@ package com.example.testhtc.struct;
 import androidx.annotation.NonNull;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -23,6 +24,7 @@ public class Company {
     @SerializedName("employees")
     @Expose
     private List<Employee> employees = null;
+
 
     public Company getCompany() {
         return company;
@@ -67,14 +69,14 @@ public class Company {
     @NonNull
     @Override
     public String toString() {
-        String result = "name: " + name + "\n" +
+        StringBuilder result = new StringBuilder("name: " + name + "\n" +
                 "age: " + age + "\n" +
-                "competences: ";
-        for (int i = 0; i < competences.size(); i++){
-            result += competences.get(i) + ", ";
+                "competences: ");
+        for (int i = 0; i < competences.size(); i++) {
+            result.append(competences.get(i)).append(", ");
         }
-        result += "!";
-        result = result.replace(", !", "");
-        return result;
+        result.append("!");
+        result = new StringBuilder(result.toString().replace(", !", ""));
+        return result.toString();
     }
 }

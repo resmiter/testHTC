@@ -15,15 +15,17 @@ import android.widget.TextView;
 import com.example.testhtc.listEmployees.CompanyAdapter;
 import com.example.testhtc.struct.Company;
 import com.example.testhtc.struct.Employee;
-import com.example.testhtc.thread.JsonQuery;
+import com.example.testhtc.utils.JsonQuery;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.net.MalformedURLException;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final Context context = this;
+    private final String LINK = "http://www.mocky.io/v2/56fa31e0110000f920a72134";
     private URL url;
     private ListView listView;
     private TextView heading;
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         heading = findViewById(R.id.heading);
 
         try {
-            url = new URL("http://www.mocky.io/v2/56fa31e0110000f920a72134");
+            url = new URL(LINK);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -56,8 +58,10 @@ public class MainActivity extends AppCompatActivity {
             Gson gson = new GsonBuilder().setLenient().create();
             Company company = gson.fromJson(request, Company.class);
             heading.setText(company.getCompany().toString());
-            List<Employee> listCom = company.getCompany().getEmployees();
-            CompanyAdapter companyAdapter = new CompanyAdapter(context, listCom);
+
+            List<Employee> listEmployees = company.getCompany().getEmployees();
+            Collections.sort(listEmployees);
+            CompanyAdapter companyAdapter = new CompanyAdapter(context, listEmployees);
             listView.setAdapter(companyAdapter);
         }
     };

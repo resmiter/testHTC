@@ -1,4 +1,4 @@
-package com.example.testhtc.thread;
+package com.example.testhtc.utils;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,7 +14,8 @@ import java.net.URL;
 
 
 public class JsonQuery extends AsyncTask<URL, Void, String> {
-    private String data = "";
+
+    private StringBuilder data = new StringBuilder();
     private Handler handler;
 
     @Override
@@ -27,7 +28,7 @@ public class JsonQuery extends AsyncTask<URL, Void, String> {
             String line = "";
             while (line != null) {
                 line = bufferedReader.readLine();
-                data = data + line;
+                data.append(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,10 +40,19 @@ public class JsonQuery extends AsyncTask<URL, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        data = data.replace("}null", "}");
+//        в конце объекта приходит null
+//        например:
+//        {
+//            "name": "Ivan",
+//            "skills": "C++"
+//        }null
+//        причину этого не нашел, поправьте, если не верно
+        data = new StringBuilder(data.toString().replace("}null", "}"));
+
+        String qwe = data.toString();
         Message msg = new Message();
         Bundle bundle = new Bundle();
-        bundle.putString("company", data);
+        bundle.putString("company", qwe);
         msg.setData(bundle);
         handler.sendMessage(msg);
     }

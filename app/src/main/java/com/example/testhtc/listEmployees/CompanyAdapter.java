@@ -39,19 +39,19 @@ public class CompanyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.item_emploee, viewGroup, false);
+            view = layoutInflater.inflate(R.layout.item_employee, viewGroup, false);
         }
 
         Employee employee = getEmployee(i);
-
         TextView itemName = view.findViewById(R.id.itemName);
         itemName.setText(employee.toString());
+
         return view;
     }
 
     private Employee getEmployee(int i) {
         return (Employee) getItem(i);
     }
-
 }
