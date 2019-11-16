@@ -10,7 +10,8 @@
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent" />
+        android:background="@color/colorAccent"
+        android:textColor="@color/white" />
 
     <ListView
         android:id="@+id/listView"

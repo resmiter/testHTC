@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             String request = msg.getData().getString("company");
 
-            Gson gson = new GsonBuilder().setLenient().create();
+            Gson gson = new Gson();
             Company company = gson.fromJson(request, Company.class);
             heading.setText(company.getCompany().toString());
 

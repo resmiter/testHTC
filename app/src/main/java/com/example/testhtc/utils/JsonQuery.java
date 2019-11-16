@@ -41,10 +41,9 @@ public class JsonQuery extends AsyncTask<URL, Void, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        String qwe = data.toString();
         Message msg = new Message();
         Bundle bundle = new Bundle();
-        bundle.putString("company", qwe);
+        bundle.putString("company", data.toString());
         msg.setData(bundle);
         handler.sendMessage(msg);
     }
