@@ -1,3 +1,2 @@
 # High Technologies Center Internship test
-
-![testHTC](https://user-images.githubusercontent.com/36949472/68855625-0f812780-06f8-11ea-9989-e2cf5fb9fe30.png)
+![1111](https://user-images.githubusercontent.com/36949472/68995933-c3c3af00-08ac-11ea-9242-4395d9453106.jpg)
