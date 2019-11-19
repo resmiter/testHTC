@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
 public class JsonQuery extends AsyncTask<URL, Void, String> {
 
     private StringBuilder data = new StringBuilder();

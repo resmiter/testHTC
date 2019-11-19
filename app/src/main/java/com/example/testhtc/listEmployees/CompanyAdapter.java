@@ -32,6 +32,7 @@ public class CompanyAdapter extends BaseAdapter {
         return employeeList.get(i);
     }
 
+
     @Override
     public long getItemId(int i) {
         return i;

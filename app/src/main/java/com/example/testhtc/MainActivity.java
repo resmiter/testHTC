@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testhtc.listEmployees.CompanyAdapter;
 import com.example.testhtc.struct.Company;
@@ -44,25 +45,30 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonQuery process = new JsonQuery();
-        process.setHandler(handler);
-        process.execute(url);
+            JsonQuery process = new JsonQuery();
+            process.setHandler(handler);
+            process.execute(url);
+
     }
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            String request = msg.getData().getString("company");
+            try {
+                String request = msg.getData().getString("company");
+                Gson gson = new Gson();
+                Company company = gson.fromJson(request, Company.class);
+                heading.setText(company.getCompany().toString());
 
-            Gson gson = new Gson();
-            Company company = gson.fromJson(request, Company.class);
-            heading.setText(company.getCompany().toString());
+                List<Employee> listEmployees = company.getCompany().getEmployees();
+                Collections.sort(listEmployees);
+                CompanyAdapter companyAdapter = new CompanyAdapter(context, listEmployees);
+                listView.setAdapter(companyAdapter);
+            } catch (NullPointerException e){
+                Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show();
+            }
 
-            List<Employee> listEmployees = company.getCompany().getEmployees();
-            Collections.sort(listEmployees);
-            CompanyAdapter companyAdapter = new CompanyAdapter(context, listEmployees);
-            listView.setAdapter(companyAdapter);
         }
     };
 }
