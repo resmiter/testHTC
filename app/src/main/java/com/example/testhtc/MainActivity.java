@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             JsonQuery process = new JsonQuery();
             process.setHandler(handler);
             process.execute(url);
-
     }
 
     @SuppressLint("HandlerLeak")
@@ -68,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (NullPointerException e){
                 Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show();
             }
-
         }
     };
 }
