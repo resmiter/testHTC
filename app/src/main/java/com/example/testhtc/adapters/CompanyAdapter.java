@@ -1,4 +1,4 @@
-package com.example.testhtc.listEmployees;
+package com.example.testhtc.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -54,5 +54,9 @@ public class CompanyAdapter extends BaseAdapter {
 
     private Employee getEmployee(int i) {
         return (Employee) getItem(i);
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 }
