@@ -1,4 +1,4 @@
-package com.example.testhtc;
+package com.example.testhtc.utils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
