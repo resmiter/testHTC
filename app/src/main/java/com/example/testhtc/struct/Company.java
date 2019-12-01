@@ -20,11 +20,10 @@ public class Company {
     private String age;
     @SerializedName("competences")
     @Expose
-    private List<String> competences = null;
+    private List<String> competences;
     @SerializedName("employees")
     @Expose
-    private List<Employee> employees = null;
-
+    private List<Employee> employees;
 
     public Company getCompany() {
         return company;

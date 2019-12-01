@@ -30,13 +30,11 @@ public class InternetConnection {
                     public void onResponse(@NonNull Call<Company> call, @NonNull Response<Company> response) {
                         if (response.isSuccessful()) {
                             assert response.body() != null;
-                            Company company = response.body().getCompany();
                             Message msg = new Message();
-                            msg.obj = company;
+                            msg.obj = response.body().getCompany();
                             handler.sendMessage(msg);
                         }
                     }
-
                     @Override
                     public void onFailure(Call<Company> call, Throwable t) {
                     }

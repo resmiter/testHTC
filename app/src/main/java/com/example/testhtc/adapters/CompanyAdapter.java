@@ -48,15 +48,10 @@ public class CompanyAdapter extends BaseAdapter {
         Employee employee = getEmployee(i);
         TextView itemName = view.findViewById(R.id.itemName);
         itemName.setText(employee.toString());
-
         return view;
     }
 
     private Employee getEmployee(int i) {
         return (Employee) getItem(i);
-    }
-
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
     }
 }

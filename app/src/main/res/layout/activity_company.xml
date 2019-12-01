@@ -4,20 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+    tools:context=".ui.companyActivity.CompanyActivity">
 
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white" />
 
     <ListView
         android:id="@+id/listView"
@@ -25,7 +19,6 @@
         android:layout_height="match_parent">
 
     </ListView>
-
 
 </LinearLayout>
 

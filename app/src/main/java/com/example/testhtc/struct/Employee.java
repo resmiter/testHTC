@@ -16,7 +16,7 @@ public class Employee implements Comparable<Employee> {
     private String phoneNumber;
     @SerializedName("skills")
     @Expose
-    private List<String> skills = null;
+    private List<String> skills;
 
 
     public String getName() {
