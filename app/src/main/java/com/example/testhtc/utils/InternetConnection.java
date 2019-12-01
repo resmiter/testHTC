@@ -36,7 +36,11 @@ public class InternetConnection {
                         }
                     }
                     @Override
-                    public void onFailure(Call<Company> call, Throwable t) {
+                    public void onFailure(@NonNull Call<Company> call,@NonNull Throwable t) {
+                        Message msg = new Message();
+                        msg.obj = null;
+                        handler.sendMessage(msg);
+
                     }
                 });
     }

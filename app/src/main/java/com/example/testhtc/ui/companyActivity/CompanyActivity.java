@@ -25,7 +25,6 @@ public class CompanyActivity extends AppCompatActivity {
     private ListView listView;
     private TextView heading;
     private CompanyAdapter adapter;
-    private CompanyViewModel model;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,10 +36,14 @@ public class CompanyActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         heading = findViewById(R.id.heading);
 
-        model = ViewModelProviders.of(this).get(CompanyViewModel.class);
+        CompanyViewModel model = ViewModelProviders.of(this).get(CompanyViewModel.class);
         model.getCompany().observe(this, new Observer<Company>() {
             @Override
             public void onChanged(Company company) {
+                if (company == null) {
+                    notifyError();
+                    return;
+                }
                 List<Employee> listEmployees = company.getEmployees();
                 Collections.sort(listEmployees);
                 adapter = new CompanyAdapter(context, listEmployees);
@@ -51,5 +54,9 @@ public class CompanyActivity extends AppCompatActivity {
 
         if (!InternetConnection.checkConnection(context))
             Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void notifyError() {
+        Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
     }
 }
