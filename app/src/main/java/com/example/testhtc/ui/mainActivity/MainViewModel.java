@@ -16,8 +16,7 @@ public class MainViewModel extends ViewModel {
 
     private void createRequest() {
         InternetConnection internetConnection = new InternetConnection();
-        ResponseHandler handler = new ResponseHandler();
-        internetConnection.loadData(handler);
+        internetConnection.loadData(new ResponseHandler());
     }
 
     LiveData<Company> getCompany() {
