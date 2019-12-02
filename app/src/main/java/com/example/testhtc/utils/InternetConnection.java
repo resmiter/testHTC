@@ -4,11 +4,13 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.testhtc.api.NetworkService;
 import com.example.testhtc.struct.Company;
+import com.example.testhtc.ui.mainActivity.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,8 +42,8 @@ public class InternetConnection {
                         Message msg = new Message();
                         msg.obj = null;
                         handler.sendMessage(msg);
-
                     }
                 });
+
     }
 }

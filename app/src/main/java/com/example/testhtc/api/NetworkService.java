@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkService {
     private static NetworkService mInstance;
-    private final String LINK = "http://www.mocky.io/";
+    private static final String LINK = "http://www.mocky.io/";
     private Retrofit mRetrofit;
 
     private NetworkService() {

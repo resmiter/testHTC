@@ -1,4 +1,4 @@
-package com.example.testhtc.ui.companyActivity;
+package com.example.testhtc.ui.mainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class CompanyActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private final Context context = this;
     private ListView listView;
     private TextView heading;
@@ -29,34 +29,31 @@ public class CompanyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company);
+        setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.listView);
         heading = findViewById(R.id.heading);
         listView = findViewById(R.id.listView);
         heading = findViewById(R.id.heading);
 
-        CompanyViewModel model = ViewModelProviders.of(this).get(CompanyViewModel.class);
+        if (savedInstanceState == null) checkConnection();
+
+        MainViewModel model = ViewModelProviders.of(this).get(MainViewModel.class);
         model.getCompany().observe(this, new Observer<Company>() {
             @Override
             public void onChanged(Company company) {
-                if (company == null) {
-                    notifyError();
-                    return;
-                }
-                List<Employee> listEmployees = company.getEmployees();
-                Collections.sort(listEmployees);
-                adapter = new CompanyAdapter(context, listEmployees);
-                listView.setAdapter(adapter);
-                heading.setText(company.toString());
+                    List<Employee> listEmployees = company.getEmployees();
+                    Collections.sort(listEmployees);
+                    adapter = new CompanyAdapter(context, listEmployees);
+                    listView.setAdapter(adapter);
+                    heading.setText(company.toString());
             }
         });
-
-        if (!InternetConnection.checkConnection(context))
-            Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show();
     }
 
-    public void notifyError() {
-        Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show();
+    private void checkConnection() {
+        if (!InternetConnection.checkConnection(context)) {
+            Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

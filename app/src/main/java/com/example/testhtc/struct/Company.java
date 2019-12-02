@@ -2,6 +2,7 @@ package com.example.testhtc.struct;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
@@ -24,6 +25,14 @@ public class Company {
     @SerializedName("employees")
     @Expose
     private List<Employee> employees;
+
+    public Company() {
+        this.name = "";
+        this.age = "";
+        this.competences = new ArrayList<>();
+        this.employees = new ArrayList<>();
+
+    }
 
     public Company getCompany() {
         return company;
@@ -74,7 +83,7 @@ public class Company {
         for (int i = 0; i < competences.size(); i++) {
             result.append(competences.get(i)).append(", ");
         }
-        result.append("!");
+            result.append("!");
         result = new StringBuilder(result.toString().replace(", !", ""));
         return result.toString();
     }

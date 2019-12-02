@@ -1,18 +1,16 @@
-package com.example.testhtc.ui.companyActivity;
+package com.example.testhtc.ui.mainActivity;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.testhtc.struct.Company;
-import com.example.testhtc.struct.Employee;
 import com.example.testhtc.utils.InternetConnection;
 import com.example.testhtc.utils.ResponseHandler;
 
-import java.util.ArrayList;
 
 
-public class CompanyViewModel extends ViewModel {
+public class MainViewModel extends ViewModel {
 
     public static MutableLiveData<Company> mCompany;
 
@@ -22,21 +20,12 @@ public class CompanyViewModel extends ViewModel {
         internetConnection.loadData(handler);
     }
 
-    private void emptyCompany() {
-        mCompany = new MutableLiveData<>();
-        Company weakCompany = new Company();
-        weakCompany.setEmployees(new ArrayList<Employee>());
-        weakCompany.setCompetences(new ArrayList<String>() {{
-            add("");
-        }});
-        mCompany.setValue(weakCompany);
-
-    }
-
     LiveData<Company> getCompany() {
         if (mCompany == null) {
-            emptyCompany();
+            mCompany = new MutableLiveData<>();
+            mCompany.setValue(new Company());
             createRequest();
+
         }
         return mCompany;
     }
