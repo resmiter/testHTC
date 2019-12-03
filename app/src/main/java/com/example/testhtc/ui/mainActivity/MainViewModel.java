@@ -9,7 +9,6 @@ import com.example.testhtc.utils.InternetConnection;
 import com.example.testhtc.utils.ResponseHandler;
 
 
-
 public class MainViewModel extends ViewModel {
 
     public static MutableLiveData<Company> mCompany;

@@ -83,7 +83,7 @@ public class Company {
         for (int i = 0; i < competences.size(); i++) {
             result.append(competences.get(i)).append(", ");
         }
-            result.append("!");
+        result.append("!");
         result = new StringBuilder(result.toString().replace(", !", ""));
         return result.toString();
     }
