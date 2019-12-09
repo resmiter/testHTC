@@ -1,4 +1,4 @@
-package com.example.testhtc.ui.mainActivity;
+package com.example.testhtc.ui.company;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -8,8 +8,7 @@ import com.example.testhtc.struct.Company;
 import com.example.testhtc.utils.InternetConnection;
 import com.example.testhtc.utils.ResponseHandler;
 
-
-public class MainViewModel extends ViewModel {
+public class CompanyViewModel extends ViewModel {
 
     public static MutableLiveData<Company> mCompany;
 
@@ -23,7 +22,6 @@ public class MainViewModel extends ViewModel {
             mCompany = new MutableLiveData<>();
             mCompany.setValue(new Company());
             createRequest();
-
         }
         return mCompany;
     }

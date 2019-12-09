@@ -10,9 +10,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Company {
 
-    @SerializedName("company")
-    @Expose
-    private Company company;
     @SerializedName("name")
     @Expose
     private String name;
@@ -32,14 +29,6 @@ public class Company {
         this.competences = new ArrayList<>();
         this.employees = new ArrayList<>();
 
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
     }
 
     public String getName() {
@@ -83,7 +72,7 @@ public class Company {
         for (int i = 0; i < competences.size(); i++) {
             result.append(competences.get(i)).append(", ");
         }
-        result.append("!");
+        if (competences.size() != 0) result.append("!");
         result = new StringBuilder(result.toString().replace(", !", ""));
         return result.toString();
     }

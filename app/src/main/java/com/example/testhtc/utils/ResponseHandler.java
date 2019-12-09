@@ -5,7 +5,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 
 import com.example.testhtc.struct.Company;
-import com.example.testhtc.ui.mainActivity.MainViewModel;
+import com.example.testhtc.ui.company.CompanyViewModel;
 
 public class ResponseHandler extends android.os.Handler {
 
@@ -13,6 +13,6 @@ public class ResponseHandler extends android.os.Handler {
     public void handleMessage(@NonNull Message msg) {
         super.handleMessage(msg);
         Company company = (Company) msg.obj;
-        MainViewModel.mCompany.setValue(company);
+        CompanyViewModel.mCompany.setValue(company);
     }
 }

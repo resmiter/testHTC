@@ -11,11 +11,11 @@ public class NetworkService {
     private Retrofit mRetrofit;
 
     private NetworkService() {
-     mRetrofit = new Retrofit.Builder()
-             .baseUrl(LINK)
-             .callbackExecutor(Executors.newSingleThreadExecutor())
-             .addConverterFactory(GsonConverterFactory.create())
-             .build();
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl(LINK)
+                .callbackExecutor(Executors.newSingleThreadExecutor())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     public static NetworkService getInstance() {
@@ -25,8 +25,7 @@ public class NetworkService {
         return mInstance;
     }
 
-    public APIService getJSONApi(){
+    public APIService getJSONApi() {
         return mRetrofit.create(APIService.class);
     }
-
 }
