@@ -3,6 +3,7 @@ package com.example.testhtc.struct;
 import androidx.annotation.NonNull;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,8 +17,7 @@ public class Employee implements Comparable<Employee> {
     private String phoneNumber;
     @SerializedName("skills")
     @Expose
-    private List<String> skills = null;
-
+    private List<String> skills;
 
     public String getName() {
         return name;
@@ -54,7 +54,7 @@ public class Employee implements Comparable<Employee> {
         StringBuilder result = new StringBuilder("name: " + name + "\n" +
                 "phone_number: " + phoneNumber + "\n" +
                 "skills: ");
-        for (int i = 0; i < skills.size(); i++){
+        for (int i = 0; i < skills.size(); i++) {
             result.append(skills.get(i)).append(", ");
         }
         result.append("!");

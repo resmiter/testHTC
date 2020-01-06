@@ -4,22 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/heading"
+    <fragment
+        android:id="@+id/fragmentEmployees"
+        android:name="com.example.testhtc.ui.company.CompanyFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:textColor="@color/white"/>
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </ListView>
-
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_company" />
 
 </LinearLayout>
 
