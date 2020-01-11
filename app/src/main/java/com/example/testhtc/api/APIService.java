@@ -1,6 +1,6 @@
 package com.example.testhtc.api;
 
-import com.example.testhtc.struct.ResponseCompany;
+import com.example.testhtc.model.ResponseCompany;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

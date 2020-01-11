@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.testhtc.R;
-import com.example.testhtc.struct.Employee;
+import com.example.testhtc.model.Employee;
 
 import java.util.List;
 

@@ -4,20 +4,19 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.testhtc.struct.Company;
-import com.example.testhtc.utils.InternetConnection;
-import com.example.testhtc.utils.ResponseHandler;
+import com.example.testhtc.model.Company;
+import com.example.testhtc.network.InternetConnection;
 
 public class CompanyViewModel extends ViewModel {
 
-    public static MutableLiveData<Company> mCompany;
+    private MutableLiveData<Company> mCompany;
 
     private void createRequest() {
         InternetConnection internetConnection = new InternetConnection();
-        internetConnection.loadData(new ResponseHandler());
+        internetConnection.loadData(mCompany);
     }
 
-    LiveData<Company> getCompany() {
+    public LiveData<Company> getCompany() {
         if (mCompany == null) {
             mCompany = new MutableLiveData<>();
             mCompany.setValue(new Company());

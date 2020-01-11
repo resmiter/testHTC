@@ -15,8 +15,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.testhtc.R;
 import com.example.testhtc.adapter.CompanyAdapter;
-import com.example.testhtc.struct.Company;
-import com.example.testhtc.struct.Employee;
+import com.example.testhtc.model.Company;
+import com.example.testhtc.model.Employee;
 
 import java.util.Collections;
 import java.util.List;

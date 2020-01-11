@@ -1,11 +1,13 @@
-package com.example.testhtc.api;
+package com.example.testhtc.network;
+
+import com.example.testhtc.api.APIService;
 
 import java.util.concurrent.Executors;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class NetworkService {
+class NetworkService {
     private static NetworkService mInstance;
     private static final String LINK = "http://www.mocky.io/";
     private Retrofit mRetrofit;
@@ -18,14 +20,12 @@ public class NetworkService {
                 .build();
     }
 
-    public static NetworkService getInstance() {
-        if (mInstance == null) {
-            mInstance = new NetworkService();
-        }
+    static NetworkService getInstance() {
+        if (mInstance == null) mInstance = new NetworkService();
         return mInstance;
     }
 
-    public APIService getJSONApi() {
+    APIService getJSONApi() {
         return mRetrofit.create(APIService.class);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.testhtc.struct;
+package com.example.testhtc.model;
 
 import androidx.annotation.NonNull;
 
