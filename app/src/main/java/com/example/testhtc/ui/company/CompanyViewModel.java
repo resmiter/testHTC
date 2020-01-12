@@ -19,7 +19,6 @@ public class CompanyViewModel extends ViewModel {
     public LiveData<Company> getCompany() {
         if (mCompany == null) {
             mCompany = new MutableLiveData<>();
-            mCompany.setValue(new Company());
             createRequest();
         }
         return mCompany;
