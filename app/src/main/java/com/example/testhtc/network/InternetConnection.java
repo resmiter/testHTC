@@ -19,10 +19,10 @@ public class InternetConnection {
                 .enqueue(new Callback<ResponseCompany>() {
                     @Override
                     public void onResponse(@NonNull Call<ResponseCompany> call, @NonNull Response<ResponseCompany> response) {
-                            if (response.body() != null) {
-                                Company company = response.body().getCompany();
-                                companyLiveData.postValue(company);
-                            }
+                        if (response.body() != null) {
+                            Company company = response.body().getCompany();
+                            companyLiveData.postValue(company);
+                        }
                     }
 
                     @Override
